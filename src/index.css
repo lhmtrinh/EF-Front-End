@@ -139,3 +139,14 @@ footer {
   font-weight: bold;
   color: #009879;
 }
+
+.mt {
+  margin-top: 40px;
+}
+.mb {
+  margin-bottom: 40px!;
+}
+
+.color-1 {
+  color: #009879;
+}

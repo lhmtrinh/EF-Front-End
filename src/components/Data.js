@@ -10,13 +10,16 @@ export default class Data extends React.Component {
             ef: null,  
             tickers: this.props.tickers,
             points: [],
+            period: this.props.period
         }
     }
 
     
     async componentDidMount(){
-        const url = 'http://localhost:8080/api/ef?tickers='+String(this.state.tickers.map(ticker=>ticker.ticker))+'&portfolios=10000';
+        //const url = 'http://localhost:8080/api/ef?tickers='+String(this.state.tickers.map(ticker=>ticker.ticker))+'&portfolios=10&from=2018&to=2020';
+        const url = 'http://localhost:8080/api/ef?tickers='+String(this.state.tickers.map(ticker=>ticker.ticker))+'&from='+this.state.period.from+'&to='+this.state.period.to;
         const response = await axios.get(url);
+        console.log(url);
         const data = response.data;
         await this.setState({loading: false, ef: data});
         var newPoint = [];
@@ -25,7 +28,7 @@ export default class Data extends React.Component {
             newPoint=[this.state.ef.curveList[index].risk,this.state.ef.curveList[index].return]
             pointList.push(newPoint);
         });
-        await this.setState({points:pointList})
+        this.setState({ points: pointList })
     }
 
     render (){

@@ -4,13 +4,9 @@ const Button = ({color, text, onClick}) => {
     return (
         <div>
             <button onClick={onClick} style={{backgroundColor: color}} 
-            className='btn'>{text}</button>   
+            className='btn btn-block'>{text}</button>   
         </div>
     )
-}
-
-Button.defaultProps ={
-    color:'steebllue',
 }
 
 Button.propTypes = {
