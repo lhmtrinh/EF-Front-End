@@ -1,4 +1,3 @@
-import Header from'./components/Header';
 import AddTicker from './components/AddTicker';
 import {useState} from 'react';
 import Data from './components/Data';
