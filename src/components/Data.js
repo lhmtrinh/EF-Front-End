@@ -18,27 +18,12 @@ export default class Data extends React.Component {
 
     
     async componentDidMount(){
-        const url = 'http://localhost:8080/api/ef?tickers='+String(this.state.tickers.map(ticker=>ticker.ticker))+'&period='+this.state.period.from+','+this.state.period.to;
+        //URL to be changed depending on where you host the application
+        const url = 'https://restef.herokuapp.com/api/ef?tickers='+String(this.state.tickers.map(ticker=>ticker.ticker))+'&period='+this.state.period.from+','+this.state.period.to;
         var e = null;
         const response =await axios.get(url)
             .catch(function (error) {
                 e = error;
-                // if (error.response) {
-                //     // The request was made and the server responded with a status code
-                //     // that falls out of the range of 2xx
-                //     console.log(error.response.data);
-                //     console.log(error.response.status);
-                //     console.log(error.response.headers);
-                // } else if (error.request) {
-                //     // The request was made but no response was received
-                //     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                //     // http.ClientRequest in node.js
-                //     console.log(error.request);
-                // } else {
-                // // Something happened in setting up the request that triggered an Error
-                //     console.log('Error', error.message);
-                // }
-                // console.log(error.config);
             });
         this.setState({error:e});
         if (this.state.error == null) {
